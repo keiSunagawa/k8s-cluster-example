@@ -62,6 +62,11 @@ resource "aws_iam_role_policy_attachment" "eks_worker_role_ecs_policy" {
   role       = "${aws_iam_role.eks_worker_role.name}"
 }
 
+resource "aws_iam_role_policy_attachment" "eks_worker_role_cw_policy" {
+  policy_arn = "arn:aws:iam::aws:policy/CloudWatchFullAccess"
+  role       = "${aws_iam_role.eks_worker_role.name}"
+}
+
 resource "aws_iam_instance_profile" "eks_worker_role_profile" {
   name = "${var.prefix}_eks_worker_profile"
   role = "${aws_iam_role.eks_worker_role.name}"

@@ -1,6 +1,6 @@
 .PHONY: init
 init:
-	kube apply -f helm-auth.yml
+	kubectl apply -f helm-auth.yml
 	helm init --service-account=tiller --history-max 200
 
 .PHONY: install-dashboard
