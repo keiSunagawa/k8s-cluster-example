@@ -29,7 +29,7 @@ resource "aws_autoscaling_group" "eks_asg" {
   launch_configuration = "${aws_launch_configuration.eks_lc.id}"
   max_size             = 2
   min_size             = 2
-  target_group_arns    = ["${aws_lb_target_group.worker_lb_tg.arn}"]
+  target_group_arns    = ["${aws_lb_target_group.worker_lb_tg.arn}", "${aws_lb_target_group.worker_lb_api_tg.arn}", "${aws_lb_target_group.worker_lb_gql_tg.arn}"]
 
   vpc_zone_identifier = keys(var.pud_subnet_items)
 
